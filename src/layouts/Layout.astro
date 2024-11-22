@@ -1,0 +1,59 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+
+import "@fontsource-variable/onest";
+import { ViewTransitions } from "astro:transitions";
+import Button from "../components/Button.astro";
+import ThemeSwitcher from "../components/ThemeSwitcher.astro";
+---
+
+<!doctype html>
+<html lang="en" transition:animate="fade" class="dark">
+	<head>
+		<meta charset="UTF-8" />
+		<meta property="og:title" content="Portfolio de Fabian Casas" />
+		<meta
+			property="og:description"
+			content="Un vistazo al trabajo de Fabian Casas en desarrollo web y diseño."
+		/>
+		<meta property="og:image" content="/portfolio_preview.png" />
+		<meta property="og:type" content="website" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="Portfolio de Fabian Casas" />
+		<meta
+			name="twitter:description"
+			content="Explora proyectos y habilidades de Fabian Casas."
+		/>
+		<meta name="twitter:image" content="/portfolio_preview.png" />
+		<meta name="description" content="Portfolio de Fabian Casas" />
+		<meta name="viewport" content="width=device-width" />
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+		<link rel="icon" type="image/x-icon" href="/favicon.svg" />
+		<ViewTransitions />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body class="dark:bg-[#0e0e0e] bg-white">
+		<!-- <article
+			class="bg-[url('noise.gif')] fixed top-0 left-0 w-full h-screen opacity-[0.025] z-[-1] pointer-events-none"
+		>
+		</article> -->
+		<slot />
+		<Button animate="hidden">
+			<ThemeSwitcher />
+		</Button>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+	</body>
+</html>
+
+<style is:global>
+	html {
+		font-family: "Onest Variable", system-ui;
+	}
+</style>
+
+
