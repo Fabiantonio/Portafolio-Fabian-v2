@@ -5,110 +5,76 @@ import GitHub from "../components/icons/icons/GitHub.astro";
 import Link from "../components/icons/Link.astro";
 ---
 
-<script>
-    import {
-        stagger,
-        spring,
-        timeline,
-        type TimelineDefinition,
-    } from "@motionone/dom";
-    const cards = document.querySelectorAll(".animate");
-
-    const sequence = [
-        [
-            cards,
-            { y: ["40%", "0%"], opacity: [0, 1] },
-            {
-                at: "-0.1",
-                duration: 0.4,
-                delay: stagger(0.05),
-                easing: spring({ velocity: 100, stiffness: 40, damping: 10 }),
-            },
-        ],
-    ];
-
-    timeline(sequence as TimelineDefinition);
-</script>
-
 <Layout title="Fabian Casas Portfolio">
-    <div class="relative flex items-center justify-center">
-        <a
-            href="/"
-            class="animate fixed top-16 left-20 text-dark dark:text-white bg-neutral-200 hover:bg-neutral-300 border-neutral-400 dark:bg-neutral-900 dark:hover:bg-neutral-800 px-6 py-3 mb-8 border border-solid dark:border-neutral-600 rounded-lg hidden lg:block"
-        >
-            Back
-        </a>
+  <main class="w-screen h-auto max-w-3xl mx-auto p-0">
+    <br />
+    <br />
+    {
+      PROJECTS.map((project) => (
+        <article class="mb-20 p-5">
+          <h3
+            data-cursor="text"
+            class=" text-2xl font-semibold text-[#f8b0b0] dark:text-[#f9d4d4] mb-2"
+          >
+            {project.title}
+          </h3>
 
-        <!-- Botón para pantallas pequeñas -->
-        <a
-            href="/"
-            class="animate absolute top-5 text-black dark:text-white bg-neutral-200 border-neutral-400 dark:bg-neutral-900 dark:hover:bg-neutral-800 px-8 py-3 mb-8 border border-solid dark:border-neutral-600 rounded-lg block lg:hidden"
-        >
-            Back
-        </a>
-    </div>
+          <p
+            data-cursor="text"
+            class=" text-lg mb-4 text-pretty dark:text-white text-black"
+          >
+            {project.description}
+          </p>
+          <ul class=" flex gap-x-2 flex-wrap mb-2 sm:flex-row">
+            {project.tags.map((tag) => (
+              <li>
+                <span
+                  data-cursor="block"
+                  class={` flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 m-1`}
+                >
+                  <tag.icon class=" size-4" /> {tag.name}
+                </span>
+              </li>
+            ))}
+          </ul>
 
-    <main class="w-screen h-auto max-w-3xl mx-auto p-0">
-        <br />
-        <br />
-        {
-            PROJECTS.map((project) => (
-                <article class="mb-20 p-5">
-                    <h3 class="animate text-2xl font-semibold text-[#f8b0b0] dark:text-[#f9d4d4] mb-2">
-                        {project.title}
-                    </h3>
-
-                    <p class="animate text-lg mb-4 text-pretty dark:text-white text-black">
-                        {project.description}
-                    </p>
-                    <ul class="animate flex gap-x-2 flex-wrap mb-2 sm:flex-row">
-                        {project.tags.map((tag) => (
-                            <li>
-                                <span
-                                    class={`animate flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 m-1`}
-                                >
-                                    <tag.icon class="animate size-4" />{" "}
-                                    {tag.name}
-                                </span>
-                            </li>
-                        ))}
-                    </ul>
-
-                    <div class="w-full px-6">
-                        <div class="flex [&:hover>div]:w-24 [&>div:hover]:w-[30rem]">
-                            {project.images.map((image, index) => (
-                                <div
-                                    class={`group relative h-96 lg:h-96 overflow-hidden shadow-lg transition-all duration-200  ${index === 0 ? "w-[30rem]" : "w-24"} `}
-                                >
-                                    <img
-                                        class="animate h-full object-cover transition-all group-hover:rotate-12 group-hover:scale-125"
-                                        src={image}
-                                        alt=""
-                                    />
-                                    <div class="invisible absolute inset-0 bg-gradient-to-b from-transparent to-black/80 group-hover:visible tran">
-                                        <div class="absolute left-6 bottom-6">
-                                            <div class="flex flex-col gap-4 text-white">
-                                                <a
-                                                    class="hover:scale-110 transition" 
-                                                    href={project.github}
-                                                    target="_blank"
-                                                ><GitHub class="w-6 h-6" /></a>
-                                                <a
-                                                    class="hover:scale-110 transition" 
-                                                    href={project.link}
-                                                    target="_blank"
-                                                >
-                                                    <Link />
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
+          <div class="w-full p-7 ">
+            <div class="flex [&:hover>div]:w-24 [&>div:hover]:w-[30rem] ">
+              {project.images.map((image, index) => (
+                <div
+                  class={`group rounded-lg relative h-96 lg:h-96 overflow-hidden shadow-lg transition-all duration-200  ${index === 0 ? "w-[30rem]" : "w-24"} `}
+                >
+                  <img
+                    class=" h-full object-cover transition-all group-hover:rotate-12 group-hover:scale-125"
+                    src={image}
+                    alt=""
+                  />
+                  <div class="invisible absolute inset-0 bg-gradient-to-b from-transparent to-black/80 group-hover:visible transition-all duration-200">
+                    <div class="absolute left-6 bottom-6">
+                      <div class="flex flex-col gap-4 text-white">
+                        <a
+                          class="hover:scale-110 transition"
+                          href={project.github}
+                          target="_blank"
+                        >
+                          <GitHub class="w-6 h-6" />
+                        </a>
+                        <a
+                          class="hover:scale-110 transition"
+                          href={project.link}
+                          target="_blank"
+                        >
+                          <Link />
+                        </a>
+                      </div>
                     </div>
-                </article>
-            ))
-        }
-    </main>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </article>
+      ))
+    }
+  </main>
 </Layout>

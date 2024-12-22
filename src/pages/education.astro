@@ -2,85 +2,52 @@
 import Layout from "../layouts/Layout.astro";
 import { EDUCATION } from "../lib/constants";
 ---
-
-<script>
-    import {
-        stagger,
-        spring,
-        timeline,
-        type TimelineDefinition,
-    } from "@motionone/dom";
-    const cards = document.querySelectorAll(".animate");
-
-    const sequence = [
-        [
-            cards,
-            { y: ["40%", "0%"], opacity: [0, 1] },
-            {
-                at: "-0.1",
-                duration: 0.4,
-                delay: stagger(0.1),
-                easing: spring({ velocity: 100, stiffness: 40, damping: 10 }),
-            },
-        ],
-    ];
-
-    timeline(sequence as TimelineDefinition);
-</script>
-
 <Layout title="Fabian Casas Portfolio">
-    <main
-        class="relative flex justify-center items-start max-w-xs lg:max-w-3xl mx-auto p-8"
+  <main
+    class="relative flex justify-center items-center max-w-xs lg:max-w-3xl mx-auto mt-10 2xl:mt-20"
+  >
+    <ol
+      class="relative border-s border-gray-200 dark:border-gray-700 flex flex-col"
     >
-        <!-- Botón para pantallas grandes -->
-        <a
-            href="/"
-            class="animate fixed top-16 left-20 text-dark dark:text-white bg-neutral-200 hover:bg-neutral-300 border-neutral-400 dark:bg-neutral-900 dark:hover:bg-neutral-800 px-6 py-3 mb-8 border border-solid dark:border-neutral-600 rounded-lg hidden lg:block"
-        >
-            Back
-        </a>
+      {
+        EDUCATION.map((edu) => (
+          <li class="mb-10 ml-6">
+            <span class=" absolute flex items-center justify-center w-6 h-6 bg-[#000000] rounded-full -start-3 ring-8 ring-[#c8c8c8] dark:ring-[#484848] dark:bg-[#2b2b2b]">
+              <svg
+                class="w-2.5 h-2.5 text-[#9c84b7] dark:text-[#7134ff]"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="#fff"
+                viewBox="0 0 20 20"
+              >
+                <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+              </svg>
+            </span>
 
-        <!-- Botón para pantallas pequeñas -->
-        <a
-            href="/"
-            class="animate absolute top-5 text-black dark:text-white bg-neutral-200 border-neutral-400 dark:bg-neutral-900 dark:hover:bg-neutral-800 px-8 py-3 mb-8 border border-solid dark:border-neutral-600 rounded-lg block lg:hidden"
-        >
-            Back
-        </a>
-
-        <ol
-            class="relative border-s border-gray-200 dark:border-gray-700 flex flex-col mt-14"
-        >
-            {
-                EDUCATION.map((edu) => (
-                    <li class="mb-10 ml-6">
-                        <span class="animate absolute flex items-center justify-center w-6 h-6 bg-[#000000] rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-[#9c84b7]">
-                            <svg
-                                class="w-2.5 h-2.5 text-[#9c84b7] dark:text-[#7134ff]"
-                                aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="#fff"
-                                viewBox="0 0 20 20"
-                            >
-                                <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
-                            </svg>
-                        </span>
-
-                        <h3 class="animate flex items-center mb-1 ml-1 text-lg font-semibold text-[#f8b0b0] black:text-[#f9d4d4] dark:text-white">
-                            {edu.position}
-                            <span class="animate bg-[#34ce74] text-black text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-[#DAF7A6] ms-3">
-                                Completado
-                            </span>
-                        </h3>
-                        <time class="animate block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-white">
-                            {edu.start} - {edu.end}
-                        </time>
-                        <p class="animate mb-4 text-base font-normal text-black dark:text-white">
-                            {edu.name}
-                        </p>
-                    </li>
-                ))
-            }
-        </ol>
-    </main>
+            <h3
+              data-cursor="text"
+              class=" flex items-center mb-1 ml-1 text-lg font-semibold text-[#f8b0b0] black:text-[#f9d4d4] dark:text-[#f9d4d4]"
+            >
+              {edu.position}
+              <span class=" bg-[#000000]  text-white text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-[#2b2b2b] dark:text-white ms-3">
+                Completado
+              </span>
+            </h3>
+            <time
+              data-cursor="text"
+              class=" block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-white"
+            >
+              {edu.start} - {edu.end}
+            </time>
+            <p
+              data-cursor="text"
+              class=" mb-4 text-base font-normal text-black dark:text-white"
+            >
+              {edu.name}
+            </p>
+          </li>
+        ))
+      }
+    </ol>
+  </main>
 </Layout>

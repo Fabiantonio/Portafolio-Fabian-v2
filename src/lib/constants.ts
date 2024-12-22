@@ -69,7 +69,7 @@ export const PROJECTS = [
         title: "LittleShop",
         description:
             "E-Commerce enfocado en accesorios y alimentos para mascotas",
-        link: "#",
+        link: "https://little-shop-six.vercel.app/",
         github: "https://github.com/Fabiantonio/LittleShop",
         images: [
             "/622shots_so.webp",
@@ -82,7 +82,7 @@ export const PROJECTS = [
         title: "TareApp",
         description:
             "Aplicación enfocada en poder crear tareas por hacer en el día a día y tener un sierto control sobre ellas",
-        link: "#",
+        link: "/",
         github: "https://github.com/Fabiantonio/TareApp",
         images: [
             "/TareApp_Login.webp",

@@ -3,67 +3,34 @@ import Layout from "../layouts/Layout.astro";
 import { EXPERIENCE } from "../lib/constants";
 ---
 
-<script>
-    import {
-        stagger,
-        spring,
-        timeline,
-        type TimelineDefinition,
-    } from "@motionone/dom";
-    const cards = document.querySelectorAll(".animate");
-
-    const sequence = [
-        [
-            cards,
-            { y: ["40%", "0%"], opacity: [0, 1] },
-            {
-                at: "-0.1",
-                duration: 0.4,
-                delay: stagger(0.1),
-                easing: spring({ velocity: 100, stiffness: 40, damping: 10 }),
-            },
-        ],
-    ];
-
-    timeline(sequence as TimelineDefinition);
-</script>
-
 <Layout title="Fabian Casas Portfolio">
-    <main
-        class="relative flex justify-center items-start max-w-xs lg:max-w-3xl mx-auto p-8"
-    >
-        <a
-            href="/"
-            class="animate fixed top-16 left-20 text-dark dark:text-white bg-neutral-200 hover:bg-neutral-300 border-neutral-400 dark:bg-neutral-900 dark:hover:bg-neutral-800 px-6 py-3 mb-8 border border-solid dark:border-neutral-600 rounded-lg hidden lg:block"
-        >
-            Back
-        </a>
-
-        <!-- Botón para pantallas pequeñas -->
-        <a
-            href="/"
-            class="animate absolute top-5 text-black dark:text-white bg-neutral-200 border-neutral-400 dark:bg-neutral-900 dark:hover:bg-neutral-800 px-8 py-3 mb-8 border border-solid dark:border-neutral-600 rounded-lg block lg:hidden"
-        >
-            Back
-        </a>
-        <ul class="w-auto">
-            {
-                EXPERIENCE.map((exp) => (
-                    <li class="mb-4 mt-14">
-                        <div>
-                            <p class="animate text-xl text-[#f8b0b0] dark:[#f9d4d4] font-bold">
-                                {exp.title}
-                            </p>
-                            <p class="animate text-md text-dark dark:text-white text-wrap font-light">
-                                {exp.description}
-                            </p>
-                            <p class="animate text-base text-[#a5a5a5]">
-                                {exp.date}
-                            </p>
-                        </div>
-                    </li>
-                ))
-            }
-        </ul>
-    </main>
+  <main
+    class="relative flex justify-center items-start max-w-3xl xl:max-w-3xl mx-auto"
+  >
+    <ul class="w-auto">
+      {
+        EXPERIENCE.map((exp) => (
+          <li class="mb-4 mt-7 2xl:mt-14">
+            <div>
+              <p
+                data-cursor="text"
+                class=" text-xl text-[#f8b0b0] dark:text-[#f9d4d4] font-bold"
+              >
+                {exp.title}
+              </p>
+              <p
+                data-cursor="text"
+                class=" text-md text-dark dark:text-white text-wrap font-light"
+              >
+                {exp.description}
+              </p>
+              <p data-cursor="text" class=" text-base text-[#a5a5a5]">
+                {exp.date}
+              </p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </main>
 </Layout>

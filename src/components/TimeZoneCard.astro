@@ -27,12 +27,11 @@ import Card from "./Card/index.astro";
         clearInterval(interval);
     });
 </script>
-
 <Card colSpan="lg:col-span-2" rowSpan="md:row-span-2" title="🕰️ Hora Actual en Chile">
-    <time
+    <time data-cursor="text"
         datetime=""
         id="timeDisplay"
-        class="text-2xl xl:text-6xl xl:whitespace-nowrap w-50 xl:w-100 flex justify-center items-center"
+        class="text-4xl xl:text-6xl xl:whitespace-nowrap w-50 xl:w-100 flex justify-center items-center"
     >
         {formatTimeForChile(getCurrentTimeInChile())}
     </time>

@@ -3,11 +3,11 @@ import Card from "./Card/index.astro";
 ---
 
 <Card colSpan="md:col-span-1" rowSpan="md:row-span-6" title="👨‍💻 Skills">
-    <span class="text-sm text-white-600 dark:text-white-400"
+    <span class="text-sm text-white-600 dark:text-white-400" data-cursor="text"
         >Conocimientos y Habilidades</span
     >
     <div class="">
-        <ul class="pl-4 mt-1 space-y-[2px] text-sm 2xl:text-base 2xl:space-y-[8px] ">
+        <ul data-cursor="text" class="pl-4 mt-1 space-y-[2px] text-sm xl:text-base xl:space-y-[8px] ">
             <li class="flex items-center gap-2">
                 • Javascript
                 <svg
@@ -222,6 +222,6 @@ import Card from "./Card/index.astro";
                 >
             </li>
         </ul>
-        <p class="text-sm text-white-600 dark:text-white-400 mt-2">Ádemas de programar me gusta mucho el fútbol, los videojuegos y la música</p>
+        <p class="text-sm xl:text-base text-white-600 dark:text-white-400 mt-3" data-cursor="text">Ádemas de programar me gusta mucho el fútbol, los videojuegos y la música</p>
     </div>
 </Card>
